@@ -1,41 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
-    public Rigidbody rd;
-
-    private GameManager gm;
-
-    public float force;
+     Rigidbody rd;
+    [SerializeField]private float jumpForce;
 
     
-    
-    void Start()
+    private void Start()
     {
-       gm= GameObject.FindObjectOfType<GameManager>();
-
-        
+       rd = GetComponent<Rigidbody> ();
+      
     }
 
-    private void OnCollisionEnter (Collision other) 
+
+    private void OnTriggerEnter(Collider other) 
+
     {
-        rd.AddForce(Vector3.up * force);
-        string metarialName = other.gameObject.GetComponent<MeshRenderer>().material.name;
+        rd.velocity = Vector3.up * Time.deltaTime * jumpForce;
+
+
+        //string metarialName = other.gameObject.GetComponent<MeshRenderer>().material.name;
        // Debug.Log("Mataryal ad:"+metarialName);
 
     
-     if (metarialName == "unsafe (Instance)"){
+     if (other.gameObject.CompareTag ("unsafe")){
         Debug.Log("unsafe");
-        gm.RestartGame();
+        GameManager.gameOver = true;
 
         }
-        else if (metarialName == "finish (Instance)"){
-            Debug.Log("The End");
+        else if (other.gameObject.CompareTag ("lastring")){
+          GameManager.levelWin = true;
             
         }
-      
-
-}
+    }
 }

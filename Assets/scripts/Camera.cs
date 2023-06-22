@@ -1,23 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Camera : MonoBehaviour
 {    
     
-    public Transform ball;
+    [SerializeField] private Transform ball;
 
     private Vector3 offset;
     
-    public float smoothSpeed;
+    [SerializeField] private float smoothSpeed;
     // Start is called before the first frame update
-    void Start()
+     void Start()
     {
         offset =transform.position - ball.position;
     }
 
     // Update is called once per frame
-    void Update()
+     void Update()
     {
         Vector3 newPos = Vector3.Lerp(transform.position,offset +ball.position, smoothSpeed);
         transform.position =newPos;
