@@ -7,6 +7,8 @@ TagManager:
   - unsafe
   - safe
   - lastring
+  - ring
+  - empty
   layers:
   - Default
   - TransparentFX
