@@ -49,10 +49,9 @@ public class GameManager : MonoBehaviour
     public void GameScore(int ringScore)
     {
         score += ringScore;
-        scoreText.text = score.ToString();
-
-        
+        scoreText.text = score.ToString();    
     }
 
     
 }
+

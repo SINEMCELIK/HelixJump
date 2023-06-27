@@ -4,10 +4,11 @@ public class Camera : MonoBehaviour
 {    
     
     [SerializeField] private Transform ball;
+    [SerializeField] private float smoothSpeed;
 
     private Vector3 offset;
     
-    [SerializeField] private float smoothSpeed;
+    
     // Start is called before the first frame update
      void Start()
     {
